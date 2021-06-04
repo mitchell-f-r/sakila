@@ -1,0 +1,21 @@
+1. SELECT * FROM actor;
+2. SELECT actor_id, last_name FROM actor WHERE first_name = ('John');
+3. SELECT actor_id, first_name,last_name FROM actor WHERE last_name = ('Neeson');
+4. SELECT actor_id, first_name, last_name FROM actor WHERE ( actor_id % 2 ) = 0;
+5. SELECT title, description FROM film WHERE film_id IN (100);
+6. SELECT * FROM film WHERE rating = ('R');
+7. SELECT * FROM film WHERE rating NOT IN ('R');
+8. SELECT * FROM film ORDER BY length DESC LIMIT 10;
+9. SELECT * FROM film ORDER BY length ASC;
+10. SELECT * FROM film WHERE special_features IN ('Deleted Scenes');
+11. SELECT last_name, COUNT(last_name) FROM actor GROUP BY last_name HAVING COUNT(last_name)<2 ORDER BY last_name DESC;
+12. SELECT last_name, COUNT(last_name) as freq FROM actor GROUP BY last_name HAVING COUNT(last_name)>1 ORDER BY freq DESC;
+13. SELECT t1.actor_id, t2.first_name, t2.last_name, COUNT(t1.film_id) as film_count FROM film_actor t1 JOIN actor_info t2 ON t1.actor_id=t2.actor_id GROUP BY actor_id
+ORDER BY film_count DESC LIMIT 1;
+14. SELECT release_year FROM film WHERE title='Academy Dinosaur'
+15. SELECT AVG (length) FROM film;
+16. SELECT AVG (film.length) FROM film JOIN film_category ON film.film_id=film_category.film_id GROUP BY film_category_id;
+17. SELECT title FROM film WHERE description LIKE "%robot%";
+18. SELECT COUNT(release_year) FROM film WHERE release_year = (2010);
+25. SELECT c.name, COUNT(c.name) as number_of_films FROM film_category fc JOIN film f ON fc.film_id = f.film_id JOIN category c ON c.category_id=fc.category_id GROUP BY fc.category_id
+ORDER BY number_of_films DESC LIMIT 1;
